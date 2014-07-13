@@ -1,0 +1,24 @@
+markdown: rdiscount
+highlighter: pygments
+permalink: /:year/:month/:day/:title.html
+name: "乱步集"
+
+author: "乱步熊"
+atom-baseurl: "http://mrkod.com"
+disqus: 
+duoshuo: "mrkod"
+
+navigations:
+  - title: Archive
+    class: fa fa-list-ul
+    href: /archive.html
+  - title: Tags
+    class: fa fa-tags
+    href: /tags.html
+  - title: About
+    class: fa fa-user
+    href: /about.html
+  - title: Subscribe
+    class: fa fa-rss
+    href: /atom.xml
+
