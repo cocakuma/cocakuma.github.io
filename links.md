@@ -3,4 +3,6 @@ title: links
 layout: page
 ---
 
-*# sort*
+[Fooleap's Blog](http://blog.fooleap.org/)
+
+
