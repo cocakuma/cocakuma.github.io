@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hello Pelican ! 
+title: "Hello Pelican !" 
 category: articles
 tags: [pelican]
 ---
