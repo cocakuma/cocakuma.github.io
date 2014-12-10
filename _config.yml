@@ -1,5 +1,5 @@
 markdown: redcarpet
-highlighter: rouge
+highlighter: pygments
 permalink: /:year/:month/:day/:title.html
 name: "乱步集"
 
