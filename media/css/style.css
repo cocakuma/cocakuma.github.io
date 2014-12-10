@@ -46,7 +46,7 @@ a, header #header h1 a, article .title a, article .meta .tags a, article .divide
   a:hover, header #header h1 a:hover, article .title a:hover, article .meta .tags a:hover, article .divider a:hover {
     color: #dd1144; }
 
-blockquote, pre code {
+blockquote {
   background-color: #f8f8f8;
   padding: 0 1em;
   border: 1px dashed #eee !important;
@@ -57,16 +57,38 @@ blockquote, pre code {
   overflow: auto; }
 
 code {
-  background-color: #f8f8f8;
-  padding: 2px 5px;
-  border: 1px dashed #e0e0e0;
-  font-family: "Ubuntu", monospace; }
+  padding: 0 .2em;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  white-space: nowrap;
+  border-radius: 4px;
+  font-family: Consolas,'DejaVu Sans Mono', monospace; }
+
+pre {
+  overflow: auto;
+  margin: 1em 0;
+  padding: 5px 0 5px 10px;
+  background: #49483E;
+}
+
+pre code {
+    display: block;
+    padding: .7em 1.2em;
+    color: #000;
+    background: #49483E;
+    border: none;
+    font-size: 14px;
+    line-height: 16.6px;
+    width: auto;
+    white-space: pre;
+}
 
 h1, h2 {
   font-size: 1.4em; }
 
 time {
-  font-family: "Ubuntu", monospace; }
+  /*font-family: "Ubuntu", monospace; }*/}
 
 header {
   width: 680px;

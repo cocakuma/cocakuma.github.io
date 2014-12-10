@@ -43,38 +43,38 @@ tags: [algorithm, polygon]
 
 1. C代码例子：
     
-~~~ cpp
-        //  Globals which should be set before calling this function:
-        //
-        //  int    polySides  =  how many corners the polygon has
-        //  float  polyX[]    =  horizontal coordinates of corners
-        //  float  polyY[]    =  vertical coordinates of corners
-        //  float  x, y       =  point to be tested
-        //
-        //  (Globals are used in this example for purposes of speed.  Change as
-        //  desired.)
-        //
-        //  The function will return YES if the point x,y is inside the polygon, or
-        //  NO if it is not.  If the point is exactly on the edge of the polygon,
-        //  then the function may return YES or NO.
-        //
-        //  Note that division by zero is avoided because the division is protected
-        //  by the "if" clause which surrounds it.
-        
-        bool pointInPolygon() {
-        
-          int   i, j = polySides - 1 ;
-          bool  oddNodes = NO      ;
-        
-          for (i = 0; i < polySides; i++) {
-            if (polyY[i] < y && polyY[j] >= y
-            ||  polyY[j] < y && polyY[i] >= y) {
-              if (polyX[i] + (y-polyY[i]) / (polyY[j]-polyY[i]) * (polyX[j]-polyX[i]) < x) {
-                oddNodes =! oddNodes; }}
-            j = i; }
-        
-          return oddNodes; }
-~~~
+```cpp
+//  Globals which should be set before calling this function:
+//
+//  int    polySides  =  how many corners the polygon has
+//  float  polyX[]    =  horizontal coordinates of corners
+//  float  polyY[]    =  vertical coordinates of corners
+//  float  x, y       =  point to be tested
+//
+//  (Globals are used in this example for purposes of speed.  Change as
+//  desired.)
+//
+//  The function will return YES if the point x,y is inside the polygon, or
+//  NO if it is not.  If the point is exactly on the edge of the polygon,
+//  then the function may return YES or NO.
+//
+//  Note that division by zero is avoided because the division is protected
+//  by the "if" clause which surrounds it.
+
+bool pointInPolygon() {
+
+  int   i, j = polySides - 1 ;
+  bool  oddNodes = NO      ;
+
+  for (i = 0; i < polySides; i++) {
+    if (polyY[i] < y && polyY[j] >= y
+    ||  polyY[j] < y && polyY[i] >= y) {
+      if (polyX[i] + (y-polyY[i]) / (polyY[j]-polyY[i]) * (polyX[j]-polyX[i]) < x) {
+        oddNodes =! oddNodes; }}
+    j = i; }
+
+  return oddNodes; }
+```
 
 
 这个C代码依次迭代多边形的每条边，判断是否与射线所在的直线相交（这里的相交表示边的两个端点一个在直线的下方，另个在直线上或者在直线上方）。如果边与直线相交，再判断边与直线的交点是否在测试点的左边（即射线上），这里的`polyX[i]+(y-polyY[i])/(polyY[j]-polyY[i])*(polyX[j]-polyX[i])`表示边与直线的交点的横坐标，可以通过线段所在直线的截距式方程和直线方程联立得出。
@@ -82,37 +82,37 @@ tags: [algorithm, polygon]
 2. 改进版：
 
 ~~~ cpp
-        //  Globals which should be set before calling this function:
-        //
-        //  int    polySides  =  how many corners the polygon has
-        //  float  polyX[]    =  horizontal coordinates of corners
-        //  float  polyY[]    =  vertical coordinates of corners
-        //  float  x, y       =  point to be tested
-        //
-        //  (Globals are used in this example for purposes of speed.  Change as
-        //  desired.)
-        //
-        //  The function will return YES if the point x,y is inside the polygon, or
-        //  NO if it is not.  If the point is exactly on the edge of the polygon,
-        //  then the function may return YES or NO.
-        //
-        //  Note that division by zero is avoided because the division is protected
-        //  by the "if" clause which surrounds it.
-        
-        bool pointInPolygon() {
-        
-          int   i, j = polySides - 1 ;
-          bool  oddNodes = NO      ;
-        
-          for (i = 0; i < polySides; i++) {
-            if ((polyY[i] < y && polyY[j] >= y
-            ||   polyY[j] < y && polyY[i] >= y)
-            &&  (polyX[i] <= x || polyX[j] <= x)) {
-              if (polyX[i] + (y-polyY[i]) / (polyY[j]-polyY[i]) * (polyX[j]-polyX[i]) < x) {
-                oddNodes =! oddNodes; }}
-            j = i; }
-        
-          return oddNodes; }
+//  Globals which should be set before calling this function:
+//
+//  int    polySides  =  how many corners the polygon has
+//  float  polyX[]    =  horizontal coordinates of corners
+//  float  polyY[]    =  vertical coordinates of corners
+//  float  x, y       =  point to be tested
+//
+//  (Globals are used in this example for purposes of speed.  Change as
+//  desired.)
+//
+//  The function will return YES if the point x,y is inside the polygon, or
+//  NO if it is not.  If the point is exactly on the edge of the polygon,
+//  then the function may return YES or NO.
+//
+//  Note that division by zero is avoided because the division is protected
+//  by the "if" clause which surrounds it.
+
+bool pointInPolygon() {
+
+  int   i, j = polySides - 1 ;
+  bool  oddNodes = NO      ;
+
+  for (i = 0; i < polySides; i++) {
+    if ((polyY[i] < y && polyY[j] >= y
+    ||   polyY[j] < y && polyY[i] >= y)
+    &&  (polyX[i] <= x || polyX[j] <= x)) {
+      if (polyX[i] + (y-polyY[i]) / (polyY[j]-polyY[i]) * (polyX[j]-polyX[i]) < x) {
+        oddNodes =! oddNodes; }}
+    j = i; }
+
+  return oddNodes; }
 ~~~
 
 这份代码只比上面多了`&& (polyX[i]<=x || polyX[j]<=x))`这个判断条件，因为只有当边的两个端点中至少有一个横坐标小于给定点的横坐标，那么这条边与直线的交点才会在给定点的左边。
@@ -120,36 +120,36 @@ tags: [algorithm, polygon]
 3. 另一个改进版，用异或操作符取代了if语句：
 
 ~~~ cpp
-        //  Globals which should be set before calling this function:
-        //
-        //  int    polySides  =  how many corners the polygon has
-        //  float  polyX[]    =  horizontal coordinates of corners
-        //  float  polyY[]    =  vertical coordinates of corners
-        //  float  x, y       =  point to be tested
-        //
-        //  (Globals are used in this example for purposes of speed.  Change as
-        //  desired.)
-        //
-        //  The function will return YES if the point x,y is inside the polygon, or
-        //  NO if it is not.  If the point is exactly on the edge of the polygon,
-        //  then the function may return YES or NO.
-        //
-        //  Note that division by zero is avoided because the division is protected
-        //  by the "if" clause which surrounds it.
-        
-        bool pointInPolygon() {
-        
-          int   i, j=polySides-1 ;
-          bool  oddNodes=NO      ;
-        
-          for (i=0; i<polySides; i++) {
-            if ((polyY[i] < y && polyY[j] >= y
-            ||   polyY[j] < y && polyY[i] >= y)
-            &&  (polyX[i] <= x || polyX[j] <= x)) {
-              oddNodes ^= (polyX[i]+(y-polyY[i]) / (polyY[j] - polyY[i]) * (polyX[j]-polyX[i]) < x); }
-            j = i; }
-        
-          return oddNodes; }
+//  Globals which should be set before calling this function:
+//
+//  int    polySides  =  how many corners the polygon has
+//  float  polyX[]    =  horizontal coordinates of corners
+//  float  polyY[]    =  vertical coordinates of corners
+//  float  x, y       =  point to be tested
+//
+//  (Globals are used in this example for purposes of speed.  Change as
+//  desired.)
+//
+//  The function will return YES if the point x,y is inside the polygon, or
+//  NO if it is not.  If the point is exactly on the edge of the polygon,
+//  then the function may return YES or NO.
+//
+//  Note that division by zero is avoided because the division is protected
+//  by the "if" clause which surrounds it.
+
+bool pointInPolygon() {
+
+  int   i, j=polySides-1 ;
+  bool  oddNodes=NO      ;
+
+  for (i=0; i<polySides; i++) {
+    if ((polyY[i] < y && polyY[j] >= y
+    ||   polyY[j] < y && polyY[i] >= y)
+    &&  (polyX[i] <= x || polyX[j] <= x)) {
+      oddNodes ^= (polyX[i]+(y-polyY[i]) / (polyY[j] - polyY[i]) * (polyX[j]-polyX[i]) < x); }
+    j = i; }
+
+  return oddNodes; }
 ~~~
 
 ###参考资料
