@@ -58,11 +58,12 @@ blockquote {
 
 code {
   padding: 0 .2em;
-  font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  /*font-size: 90%;*/
+  color: #DD1144;
+  background-color: #F8F8F8;
   white-space: nowrap;
-  border-radius: 4px;
+  border-radius: 3px;
+  border: 1px solid #CCC;
   font-family: Consolas,'DejaVu Sans Mono', monospace; }
 
 pre {
